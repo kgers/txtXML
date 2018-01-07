@@ -1,0 +1,11 @@
+fopen = open("seqNo.txt", "r")
+fread = fopen.read().split("\n") #readlines()
+
+print(fread)
+
+x = int(fread[0])+1
+fopen.close()
+
+fopen = open("seqNo.txt", "w")
+fopen.write(str(x))
+fopen.close()
