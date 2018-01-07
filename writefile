@@ -1,6 +1,25 @@
-fopen = open("seqNo.txt", "r")
-fread = fopen.read().split("\n") #readlines()
+import os
 
+#Get list of files in directory into a Python List
+curdir = os.getcwd()
+#file_list = [fl for fl in os.listdir(curdir)] #Doesn't ingore directories
+file_list = [fl for fl in os.listdir(curdir) if os.path.isfile(os.path.join(curdir, fl))] #Ignores directories
+
+########################################
+#See what os.path.join does
+def TestFile(curdirectory, filelist):
+    for fl in file_list:
+        print(os.path.join(curdir, fl))
+
+TestFile(curdir, file_list)
+
+print(file_list)
+
+########################################
+
+#Open seqNo.txt
+fopen = open(file_list[1], "r")
+fread = fopen.read().split("\n") #readlines()
 print(fread)
 
 x = int(fread[0])+1
@@ -9,3 +28,8 @@ fopen.close()
 fopen = open("seqNo.txt", "w")
 fopen.write(str(x))
 fopen.close()
+
+#######################################
+
+#Move file into directory
+#os.rename(curdir + "/" + file_list[3], curdir + "/" + file_list[2] + "/" + file_list[3])
