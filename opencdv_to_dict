@@ -1,0 +1,20 @@
+fopen = open("testscrapedoc.csv", "r")
+
+fread = fopen.read().split("\n")
+
+print(fread)
+
+test = []
+testdict = {}
+d ={}
+
+for l in fread:
+    (x,y,z) = l.split(",")
+    test.append((x,y,z))
+    d.update({x:[y,z]})
+    print(test)
+
+testdict = {tup[0]:[tup[1],tup[2]] for tup in test}
+
+print(testdict)
+print(d)
